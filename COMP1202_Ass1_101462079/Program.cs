@@ -20,7 +20,7 @@ namespace Comp1202_Ass1_101462079
                     "Which Formula 1 team based in Italy?",
                     "Which Country did Lewis Hamilton won the 7th Championship?",
                     "What year to Max Verstappen Win his first Championship?",
-                    "Which Driver Called 'LION OF ISTANBUL'"
+                    
             };
 
             string[] answers =
@@ -29,16 +29,17 @@ namespace Comp1202_Ass1_101462079
                 "A.Redbull \nB. Alpine  \nC. Williams \nD. Ferrari \nE. McLaren",
                 "A. Canada \nB. Germany  \nC Netherlands \nD. Japan  \nE. Turkey",
                 "A. 2021 \nB. 2016 \nC. 2023 \nD. 2008 \nE.2012",
-                "A.Sebastian VETTEL \nB.Charles Leclerc \nC.Felipe Massa \nD.Lando Norris \nE.Jenson Botton"
+                
             };
 
-            int allQuestions = 5;
+            int questionsAll = 4;
             int eachscore = 25;
-            int[] correctAnswers = { 1,3,4,0,2 };
-            int totalScore =(allQuestions * eachscore) ;
+            int[] correctAnswers = { 1,3,4,0 };
+            int correctAnswerCount = 0;
+            int persantageScore = questionsAll * eachscore;
 
 
-            for (int i = 0; i < allQuestions; i++)
+            for (int i = 0; i < questionsAll; i++)
             {
                 Console.WriteLine("Question" + (i + 1));
                 Console.WriteLine(questions[i]);
@@ -52,39 +53,39 @@ namespace Comp1202_Ass1_101462079
 
                 if (string.Equals(playerAnswer, "A", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 0)
                 {
-                    totalScore++;
-                    eachscore++;
+                    correctAnswerCount++;
+                    
                 }
                 else if (string.Equals(playerAnswer, "B", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 1)
                 {
-                    totalScore++;
-                    eachscore++;
+                    correctAnswerCount++;
+                    
                 }
                 else if (string.Equals(playerAnswer, "C", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 2)
                 {
-                    totalScore++;
-                    eachscore++;
+                      correctAnswerCount++;
+                    
                 }
                 else if(string.Equals(playerAnswer, "D", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 3)
                 {
-                    totalScore++;
-                    eachscore++;
+                    correctAnswerCount++;
+                   
                 }
                 else if(string.Equals(playerAnswer, "E", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 4)
                 {
-                    totalScore++;
-                    eachscore++;
+                    correctAnswerCount++;
+                   
                 }
 
                 
-                
+           }
 
-                
+            int totalScore = correctAnswerCount * eachscore;
+            double persentageScore = ((double)totalScore /  eachscore) * 100;
+            Console.WriteLine("Quiz Completed!");
+            Console.WriteLine("Your score is: " + correctAnswerCount * 25 + " out of " + (questionsAll * 25));
 
-            }
-            Console.WriteLine("Quiz Complated!");
-            Console.WriteLine("Your score is: " + totalScore);
-            
+
         }
 
     }
