@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace Comp1202_Ass1_101462079
@@ -10,9 +11,21 @@ namespace Comp1202_Ass1_101462079
             Console.WriteLine("Enter Your Course code:");
             string courseCode = Console.ReadLine();
             Console.WriteLine("Enter Your First Name and Last Name");
+            Console.WriteLine("");
+            Console.WriteLine("");
             string firstLastName = Console.ReadLine();
-            Console.WriteLine("There is a multiple-choise question with 5 options. Every question is worth 25 points");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine(courseCode + "  " + firstLastName);
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
             Console.WriteLine("Welcome to Formula 1 Quiz");
+            Console.WriteLine("There is a multiple-choise question with 5 options. Every question is worth 25 points");
+
+
+
 
             string[] questions =
             {
@@ -20,8 +33,9 @@ namespace Comp1202_Ass1_101462079
                     "Which Formula 1 team based in Italy?",
                     "Which Country did Lewis Hamilton won the 7th Championship?",
                     "What year to Max Verstappen Win his first Championship?",
-                    
+
             };
+
 
             string[] answers =
             {
@@ -29,64 +43,47 @@ namespace Comp1202_Ass1_101462079
                 "A.Redbull \nB. Alpine  \nC. Williams \nD. Ferrari \nE. McLaren",
                 "A. Canada \nB. Germany  \nC Netherlands \nD. Japan  \nE. Turkey",
                 "A. 2021 \nB. 2016 \nC. 2023 \nD. 2008 \nE.2012",
-                
+
             };
 
-            int questionsAll = 4;
-            int eachscore = 25;
-            int[] correctAnswers = { 1,3,4,0 };
-            int correctAnswerCount = 0;
-            int persantageScore = questionsAll * eachscore;
 
 
-            for (int i = 0; i < questionsAll; i++)
+            char[] quizCorrectAnswers =
             {
-                Console.WriteLine("Question" + (i + 1));
+                'B','D','E','A'
+            };
+            int totalQuizPonts = 0;
+            int quizPoints = 25;
+            
+            //int playerScore = 25;
+
+            for (int i = 0; i < questions.Length; i++)
+            {
+                Console.WriteLine("Question " + i + 1);
                 Console.WriteLine(questions[i]);
                 Console.WriteLine(answers[i]);
-                Console.WriteLine("Please Enter your answer: ");
+                Console.WriteLine("Please enter your answer");
+                char playerAnswer = char.ToUpper(Console.ReadLine()[0]);
 
-                string playerAnswer = Console.ReadLine();
-                
 
-                
-
-                if (string.Equals(playerAnswer, "A", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 0)
+                if (playerAnswer == quizCorrectAnswers[i])
                 {
-                    correctAnswerCount++;
+                    Console.WriteLine("CORRECT ANSWER");
+                    
+                    totalQuizPonts += quizPoints;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong");
                     
                 }
-                else if (string.Equals(playerAnswer, "B", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 1)
-                {
-                    correctAnswerCount++;
-                    
-                }
-                else if (string.Equals(playerAnswer, "C", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 2)
-                {
-                      correctAnswerCount++;
-                    
-                }
-                else if(string.Equals(playerAnswer, "D", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 3)
-                {
-                    correctAnswerCount++;
-                   
-                }
-                else if(string.Equals(playerAnswer, "E", StringComparison.OrdinalIgnoreCase) && correctAnswers[i] == 4)
-                {
-                    correctAnswerCount++;
-                   
-                }
+            }
 
-                
-           }
 
-            int totalScore = correctAnswerCount * eachscore;
-            double persentageScore = ((double)totalScore /  eachscore) * 100;
-            Console.WriteLine("Quiz Completed!");
-            Console.WriteLine("Your score is: " + correctAnswerCount * 25 + " out of " + (questionsAll * 25));
 
+
+         Console.WriteLine("Your Score is: " + totalQuizPonts);
 
         }
-
     }
 }
