@@ -82,7 +82,7 @@ namespace Comp1202_Ass1_101462079
 
 
 
-         Console.WriteLine("Your Score is: " + totalQuizPonts);
+         Console.WriteLine("Your Score is: " + totalQuizPonts + "/100");
 
         }
     }
